@@ -1,1 +1,0 @@
-export default function Medical_report_select(){};

@@ -1,5 +1,5 @@
-// Medical_report.tsx
-export interface Medical_report {
+// MedicalReport.tsx
+export interface MedicalReport {
     date: string;             // 日付
     thermometer: number;    // 体温
     weight: number;         // 体重
