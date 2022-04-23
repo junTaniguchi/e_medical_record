@@ -6,6 +6,7 @@ import MedicalReportInsert from './components/MedicalReportInsert'
 import MedicalReportSelect from './components/MedicalReportSelect'
 
 export default function App() {
+  //登録画面
   const [report, setReport] = useState<MedicalReport>({
     date: "",
     thermometer: 0.0,
@@ -47,10 +48,12 @@ export default function App() {
   }
   const putReport = (e: any) => {
     e.preventDefault();
-    fetch("http://XXXXXXXXXXXXX?" + report)
-      .then(res => alert("登録完了"))
+    console.log(report);
+    // fetch("http://XXXXXXXXXXXXX?" + report)
+    //   .then(res => alert("登録完了"))
+    //   .then(res => console.log(report))
   }
-
+  //検索画面
   const [selectReport, setSelectReport] = useState<SearchMedicalReport>({
     minDate: "",
     maxDate: "",
@@ -64,16 +67,41 @@ export default function App() {
     maxPressure: 0,
     memo: "",
   });
+  const changeSelectMinDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, minDate: e.target.value });
+  }
+  const changeSelectMaxDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, maxDate: e.target.value });
+  }
+  const changeSelectThermometer = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, thermometer: Number(e.target.value) });
+  }
+  const changeSelectWeight = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, weight: Number(e.target.value) });
+  }
+  const changeSelectCalorie = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, calorie: Number(e.target.value) });
+  }
+  const changeSelectHeartRate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, heartRate: Number(e.target.value) });
+  }
+  const changeSelectBreathingRate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, breathingRate: Number(e.target.value) });
+  }
+  const changeSelectOxygenRate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, oxygenRate: Number(e.target.value) });
+  }
+  const changeSelectMinPressure = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, minPressure: Number(e.target.value) });
+  }
+  const changeSelectMaxPressure = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectReport({ ...selectReport, maxPressure: Number(e.target.value) });
+  }
   const searchReport = (e: any) => {
     e.preventDefault();
-    fetch("http://XXXXXXXXXXXXX?" + selectReport)
-      .then(res => alert("登録完了"))
-  }
-  const changeMinDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setReport({ ...report, date: e.target.value });
-  }
-  const changeMaxDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setReport({ ...report, date: e.target.value });
+    console.log(selectReport);
+    // fetch("http://XXXXXXXXXXXXX?" + selectReport)
+    //   .then(res => alert("登録完了"))
   }
   return (
     <div className="App">
@@ -92,16 +120,16 @@ export default function App() {
       />
       <MedicalReportSelect
         setSelectReport={setSelectReport}
-        changeMinDate={changeMinDate}
-        changeMaxDate={changeMaxDate}
-        changeThermometer={changeThermometer}
-        changeWeight={changeWeight}
-        changeCalorie={changeCalorie}
-        changeHeartRate={changeHeartRate}
-        changeBreathingRate={changeBreathingRate}
-        changeOxygenRate={changeOxygenRate}
-        changeMinPressure={changeMinPressure}
-        changeMaxPressure={changeMaxPressure}
+        changeSelectMinDate={changeSelectMinDate}
+        changeSelectMaxDate={changeSelectMaxDate}
+        changeSelectThermometer={changeSelectThermometer}
+        changeSelectWeight={changeSelectWeight}
+        changeSelectCalorie={changeSelectCalorie}
+        changeSelectHeartRate={changeSelectHeartRate}
+        changeSelectBreathingRate={changeSelectBreathingRate}
+        changeSelectOxygenRate={changeSelectOxygenRate}
+        changeSelectMinPressure={changeSelectMinPressure}
+        changeSelectMaxPressure={changeSelectMaxPressure}
         searchReport={searchReport}
       />
     </div>
